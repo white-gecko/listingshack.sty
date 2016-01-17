@@ -3,32 +3,40 @@
 % - Add Turtle as langugage
 % - Improve XML style
 % - Fix dashes/hyphens
+%
+% Changelog:
+% 0.01:
+%   * Initial Version
+% 0.02:
+%   * Fix some indentions and comments
+%   * Add require for fontspec
 % 
 % (c) 2013–2016 Natanael Arndt
 % LPPL LaTeX Public Project License
 %  
 \NeedsTeXFormat{LaTeX2e}[1994/06/01]
 \ProvidesPackage{listingshack}
-  [2013/05/08 v0.01 LaTeX package for a cooler listing appearance]
+  [2013/05/08 v0.02 LaTeX package for a cooler listing appearance]
 
 \RequirePackage{listings}
 \RequirePackage{color}
-\RequirePackage{scrhack} % Um Probleme mit listings/float und KOMA script zu beheben
+\RequirePackage{scrhack} % For fixing probleme with listings/float and KOMA script
+\RequirePackage{fontspec}
 
 % Fix dashs/hyphens
-\makeatletter
 \lst@CCPutMacro\lst@ProcessOther {"2D}{\lst@ttfamily{-{}}{-{}}}
 \@empty\z@\@empty
-\makeatother
 
-\newfontfamily\listingsfont[Scale=.7]{DejaVu Sans Mono}  % LMMono10, DejaVu Sans Mono, Droid Sans Mono, Source Code Pro
-\newfontfamily\listingsfontinline[Scale=.8]{DejaVu Sans Mono} 
-
+% Set listings font
+% This could be for exmaple:
+% LMMono10, DejaVu Sans Mono, Droid Sans Mono, Source Code Pro
+\newfontfamily\listingsfont[Scale=.7]{DejaVu Sans Mono}
+\newfontfamily\listingsfontinline[Scale=.8]{DejaVu Sans Mono}
 
 \lstset{
-	basicstyle=\listingsfont,
-	inputencoding=utf8,
-	extendedchars=\true
+  basicstyle=\listingsfont,
+  inputencoding=utf8,
+  extendedchars=\true
 }
 
 \definecolor{olivegreen}{rgb}{0.2,0.8,0.5}
@@ -36,10 +44,10 @@
 \definecolor{gray}{rgb}{0.4,0.4,0.4}
 
 \lstdefinelanguage{ttl}{
-	sensitive=true,
-	morecomment=[l][\color{gray}]{@},
-	morecomment=[l][\color{darkgray}]{\#\ },
-	morestring=[b][\color{darkgray}]\",
+  sensitive=true,
+  morecomment=[l][\color{gray}]{@},
+  morecomment=[l][\color{darkgray}]{\#\ },
+  morestring=[b][\color{darkgray}]\",
 }
 
 \endinput
